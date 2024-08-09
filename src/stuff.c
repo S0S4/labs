@@ -32,41 +32,11 @@ void process_instruction()
     CURRENT_STATE.REGS;
     CURRENT_STATE.PC = MEM_TEXT_START;
 
-// J Instruction
+    // J Instruction
 
-// MIRAR SI LA DIRECCION DE SALTO ES CORRECTA
+    // MIRAR SI LA DIRECCION DE SALTO ES CORRECTA
 
-    uint32_t curr_ins = mem_read_32(CURRENT_STATE.PC);
-    
-    printf("curr_ins: %x\n", curr_ins);
-    printf("PC: \n%x\n", CURRENT_STATE.PC);
-    uint32_t temp = CURRENT_STATE.PC | (curr_ins << 2);
-    printf("TEMP: %x\n", temp);
-    NEXT_STATE.PC = temp;
-    
-
-
-// JAL Instruction     
-
-    curr_ins = mem_read_32(CURRENT_STATE.PC);
-    temp = CURRENT_STATE.PC || (curr_ins << 2);
-    CURRENT_STATE.REGS[31] = CURRENT_STATE.PC + 0x8;
-    NEXT_STATE.PC = temp;
-
-
-// BEQ Instruction 
-    int i = 0;
-    curr_ins = mem_read_32(CURRENT_STATE.PC);
-    uint32_t b_target_address = (curr_ins+0x4) + (curr_ins && 0xFFFF) & 0x00000000;
-    uint32_t rs = curr_ins && TA_MASK;
-    for( i ; i < MIPS_REGS; i++){
-         uint32_t reg_addr = mem_read_32(CURRENT_STATE.REGS[i]);
-         if(reg_addr == rs){
-            break;
-         }
-    }
-    NEXT_STATE.PC = temp;
-
+ 
 
 // BNE 
 
@@ -82,7 +52,7 @@ void process_instruction()
     uint32_t rt = curr_ins && RT_MASK;
     uint16_t imm = curr_ins && IM_MASK;
     
-        for(i = 0; i < MIPS_REGS; i++){
+        for(int i = 0; i < MIPS_REGS; i++){
          uint32_t reg_addr = mem_read_32(CURRENT_STATE.REGS[i]);
          if(reg_addr == rs){
             uint32_t rt_aux = CURRENT_STATE.REGS[i] + imm;
