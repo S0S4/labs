@@ -19,12 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Desktop\labs\src\shell.c" />
-    <ClCompile Include="..\..\..\..\Desktop\labs\src\sim.c" />
+    <ClCompile Include="shell.c" />
+    <ClCompile Include="sim.c" />
     <ClCompile Include="functions.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Desktop\labs\src\shell.h" />
+    <ClInclude Include="shell.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

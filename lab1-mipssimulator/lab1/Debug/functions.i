@@ -1,4 +1,4 @@
-#line 1 "C:\\Users\\0x0\\source\\repos\\lab1\\lab1\\functions.c"
+#line 1 "C:\\Users\\0x0\\Desktop\\labs\\lab1-mipssimulator\\lab1\\functions.c"
 #pragma external_header(push)
 #line 1 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h"
 
@@ -10730,8 +10730,8 @@ __pragma(pack(pop))
 #pragma warning(pop) 
 #line 2449 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdio.h"
 #pragma external_header(pop)
-#line 2 "C:\\Users\\0x0\\source\\repos\\lab1\\lab1\\functions.c"
-#line 1 "C:\\Users\\0x0\\source\\repos\\lab1\\lab1\\shell.h"
+#line 2 "C:\\Users\\0x0\\Desktop\\labs\\lab1-mipssimulator\\lab1\\functions.c"
+#line 1 "C:\\Users\\0x0\\Desktop\\labs\\lab1-mipssimulator\\lab1\\shell.h"
 
 
 
@@ -10890,7 +10890,7 @@ typedef unsigned long long uintmax_t;
 
 #line 139 "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\stdint.h"
 #pragma external_header(pop)
-#line 19 "C:\\Users\\0x0\\source\\repos\\lab1\\lab1\\shell.h"
+#line 19 "C:\\Users\\0x0\\Desktop\\labs\\lab1-mipssimulator\\lab1\\shell.h"
 
 
 
@@ -10916,8 +10916,8 @@ void     mem_write_32(uint32_t address, uint32_t value);
 
 void process_instruction();
 
-#line 45 "C:\\Users\\0x0\\source\\repos\\lab1\\lab1\\shell.h"
-#line 3 "C:\\Users\\0x0\\source\\repos\\lab1\\lab1\\functions.c"
+#line 45 "C:\\Users\\0x0\\Desktop\\labs\\lab1-mipssimulator\\lab1\\shell.h"
+#line 3 "C:\\Users\\0x0\\Desktop\\labs\\lab1-mipssimulator\\lab1\\functions.c"
 
 #pragma external_header(push)
 #line 1 "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\stdbool.h"
@@ -10943,7 +10943,7 @@ void process_instruction();
 
 #line 22 "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\stdbool.h"
 #pragma external_header(pop)
-#line 5 "C:\\Users\\0x0\\source\\repos\\lab1\\lab1\\functions.c"
+#line 5 "C:\\Users\\0x0\\Desktop\\labs\\lab1-mipssimulator\\lab1\\functions.c"
 
 
 

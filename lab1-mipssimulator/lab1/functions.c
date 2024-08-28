@@ -72,7 +72,7 @@ void beq() { // Branch On Equal
     }
 }
 
-void bne(){ // Branch On Not Equal
+void bne() { // Branch On Not Equal
     int32_t curr_ins = mem_read_32(CURRENT_STATE.PC);
     int32_t addr = (int32_t)((curr_ins + 4) << 2);
     int8_t rs = (curr_ins & RS_MASK);
@@ -88,7 +88,7 @@ void blez() { // Branch on Less Than Or Equal To Zero
     int32_t addr = (int32_t)((curr_ins + 4) << 2);
     int8_t rs = (curr_ins & RS_MASK);
     int8_t rt = (curr_ins & RT_MASK);
-    
+
     if (rs <= 0) {
         NEXT_STATE.PC = addr;
     }
@@ -101,7 +101,7 @@ void bgtz() { // Branch On Greater Than Zero
     int8_t rt = (curr_ins & RT_MASK);
 
     if (rt > 0) {
-    NEXT_STATE.PC = addr;
+        NEXT_STATE.PC = addr;
     }
 
 }
@@ -109,13 +109,13 @@ void bgtz() { // Branch On Greater Than Zero
 void addi() { // ADD Immediate
 
     int32_t curr_ins = mem_read_32(CURRENT_STATE.PC);
-    int32_t imm = (int32_t)(curr_ins & IM_MASK); 
+    int32_t imm = (int32_t)(curr_ins & IM_MASK);
     int8_t rs = (curr_ins & RS_MASK);
     int8_t rt = (curr_ins & RT_MASK);
 
     int32_t sum = imm + rs;
 
-    if ((sum & 0x80000000) != (sum & 0x40000000)){ // Detect overflow
+    if ((sum & 0x80000000) != (sum & 0x40000000)) { // Detect overflow
         NEXT_STATE.REGS[rt] = -1;
         puts("Overflow!");
     }
@@ -155,7 +155,7 @@ void sltiu() { // Set On Less Than Immediate Unsigned
         NEXT_STATE.REGS[rt] = 0;
     }
 }
- 
+
 void andi() { // AND Immediate
     int32_t curr_ins = mem_read_32(CURRENT_STATE.PC);
     int32_t imm = (int32_t)(curr_ins & IM_MASK);
@@ -197,7 +197,7 @@ void lui() { // Load Upper Immediate
 
     NEXT_STATE.REGS[rt] = imm;
 }
- 
+
 void lb() { // Load Byte
     int32_t curr_ins = mem_read_32(CURRENT_STATE.PC);
     int32_t imm = (int32_t)(curr_ins & IM_MASK);
@@ -211,7 +211,7 @@ void lb() { // Load Byte
         exit(1);
     }
 
-    int32_t virt_addr_val = (int32_t) (mem_read_32(virt_addr) && 0xFF); // Take the byte and sign-extend it
+    int32_t virt_addr_val = (int32_t)(mem_read_32(virt_addr) && 0xFF); // Take the byte and sign-extend it
     NEXT_STATE.REGS[rt] = virt_addr_val;
 }
 
@@ -365,7 +365,7 @@ void bgezal() { //
 
     NEXT_STATE.REGS[31] = next_ins + 4;
 
-    if (mem_read_32(CURRENT_STATE.REGS[rs] & 0x80000000 == 0)){
+    if (mem_read_32(CURRENT_STATE.REGS[rs] & 0x80000000 == 0)) {
         NEXT_STATE.PC = rs_val + offset;
     }
 }
@@ -406,7 +406,7 @@ void sra() { // Shift Right Arithmetic
 
 void sllv() {
     int32_t curr_ins = mem_read_32(CURRENT_STATE.PC);
-    
+
     int32_t rs = curr_ins & RS_MASK;
     int32_t rt = curr_ins & RT_MASK;
     int32_t rd = curr_ins & RD_MASK;
@@ -430,7 +430,7 @@ void srlv() {
 }
 
 void srav() {
-    
+
     int32_t curr_ins = mem_read_32(CURRENT_STATE.PC);
 
     int32_t rs = curr_ins & RS_MASK;
@@ -461,8 +461,8 @@ void jalr() {
     int32_t rs = curr_ins & RS_MASK;
     int32_t rd = curr_ins & RD_MASK;
 
-    NEXT_STATE.REGS[rd] = curr_ins+8; // Address after the delay slot
-   
+    NEXT_STATE.REGS[rd] = curr_ins + 8; // Address after the delay slot
+
     if ((rs & 0x3) == 0) {
         NEXT_STATE.PC = mem_read_32(CURRENT_STATE.REGS[rs]);
     }
@@ -494,7 +494,7 @@ void addu() {
     int32_t rt = curr_ins & RT_MASK;
     int32_t rd = curr_ins & RD_MASK;
 
-    NEXT_STATE.REGS[rd] = (uint32_t) (mem_read_32(CURRENT_STATE.REGS[rs]) + mem_read_32(CURRENT_STATE.REGS[rt]));
+    NEXT_STATE.REGS[rd] = (uint32_t)(mem_read_32(CURRENT_STATE.REGS[rs]) + mem_read_32(CURRENT_STATE.REGS[rt]));
 
 }
 
@@ -519,7 +519,7 @@ void subu() {
     NEXT_STATE.REGS[rd] = (uint32_t)(mem_read_32(CURRENT_STATE.REGS[rs]) | mem_read_32(CURRENT_STATE.REGS[rt]));
 }
 
-void and() {
+void and () {
     int32_t curr_ins = mem_read_32(CURRENT_STATE.PC);
 
     int32_t rs = curr_ins & RS_MASK;
@@ -528,7 +528,7 @@ void and() {
 
     NEXT_STATE.REGS[rd] = mem_read_32(CURRENT_STATE.REGS[rs]) & mem_read_32(CURRENT_STATE.REGS[rt]);
 }
-void or() {
+void or () {
     int32_t curr_ins = mem_read_32(CURRENT_STATE.PC);
 
     int32_t rs = curr_ins & RS_MASK;
@@ -538,7 +538,7 @@ void or() {
     NEXT_STATE.REGS[rd] = mem_read_32(CURRENT_STATE.REGS[rs]) | mem_read_32(CURRENT_STATE.REGS[rt]);
 }
 
-void xor() {
+void xor () {
     int32_t curr_ins = mem_read_32(CURRENT_STATE.PC);
 
     int32_t rs = curr_ins & RS_MASK;
@@ -581,7 +581,7 @@ void sltu() {
     int32_t rd = curr_ins & RD_MASK;
     uint32_t rs_val = mem_read_32(CURRENT_STATE.REGS[rs]);
     uint32_t rt_val = mem_read_32(CURRENT_STATE.REGS[rt]);
-    if ( rs_val < rt_val) {
+    if (rs_val < rt_val) {
         NEXT_STATE.REGS[rd] = 1;
 
     }
@@ -630,8 +630,8 @@ void multu() {
     uint32_t rs_val = mem_read_32(CURRENT_STATE.REGS[rs]);
     uint32_t rt_val = mem_read_32(CURRENT_STATE.REGS[rt]);
 
-    NEXT_STATE.LO = (uint32_t) (rs_val * rt_val) & 0xFFFF;
-    NEXT_STATE.HI = (uint32_t) (rs_val * rt_val) & 0xFFFF0000;
+    NEXT_STATE.LO = (uint32_t)(rs_val * rt_val) & 0xFFFF;
+    NEXT_STATE.HI = (uint32_t)(rs_val * rt_val) & 0xFFFF0000;
 }
 void div() {
     int32_t curr_ins = mem_read_32(CURRENT_STATE.PC);
